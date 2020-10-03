@@ -38,6 +38,19 @@ namespace VectorCollection
             return GetEnumerator();
         }
 
+        public double this[int index]
+        {
+            get 
+            {
+                return _data[index];
+            }
+
+            set
+            {
+                _data[index] = value;
+            }
+        }
+
         public MathVector AddNumber(double n)
         {
             return new MathVector(_data.Select(elem => elem + n).ToList());
@@ -62,7 +75,7 @@ namespace VectorCollection
         {
             if (n != 0)
             {
-                throw new ArgumentException("The division number is zero");
+                throw new ArgumentException("Division by zero");
             }
 
             return new MathVector(_data.Select(elem => elem / n).ToList());
@@ -81,6 +94,110 @@ namespace VectorCollection
         public static MathVector operator*(MathVector vector, double n)
         {
             return vector.MulitplyByNumber(n);
+        }
+
+        public MathVector AddVector(MathVector other)
+        {
+            if (other == null)
+            {
+                throw new NullReferenceException("Invalid arguments");
+            }
+
+            if (_data.Count() != other.Count())
+            {
+                throw new InvalidOperationException("Vectors lengths differ");
+            }
+
+            List<double> data = new List<double>();
+            for (int i = 0; i < _data.Count(); i++)
+            {
+                data.Add(_data[i] + other[i]);
+            }
+
+            return new MathVector(data);
+        }
+
+        public static MathVector operator +(MathVector first, MathVector second)
+        {
+            return first.AddVector(second);
+        }
+
+        public MathVector SubstractVector(MathVector other)
+        {
+            if (other == null)
+            {
+                throw new NullReferenceException("Invalid arguments");
+            }
+
+            if (_data.Count() != other.Count())
+            {
+                throw new InvalidOperationException("Vectors lengths differ");
+            }
+
+            List<double> data = new List<double>();
+            for (int i = 0; i < _data.Count(); i++)
+            {
+                data.Add(_data[i] - other[i]);
+            }
+
+            return new MathVector(data);
+        }
+
+        public static MathVector operator -(MathVector first, MathVector second)
+        {
+            return first.SubstractVector(second);
+        }
+
+        public MathVector DivideByVector(MathVector other)
+        {
+            if (other == null)
+            {
+                throw new NullReferenceException("Invalid arguments");
+            }
+
+            if (_data.Count() != other.Count())
+            {
+                throw new InvalidOperationException("Vectors lengths differ");
+            }
+
+            List<double> data = new List<double>();
+            for (int i = 0; i < _data.Count(); i++)
+            {
+                data.Add(_data[i] / other[i]);
+            }
+
+            return new MathVector(data);
+        }
+
+        public static MathVector operator /(MathVector first, MathVector second)
+        {
+            return first.DivideByVector(second);
+        }
+
+        public MathVector MultiplyByVector(MathVector other)
+        {
+            if (other == null)
+            {
+                throw new NullReferenceException("Invalid arguments");
+            }
+
+            if (_data.Count() != other.Count())
+            {
+                throw new InvalidOperationException("Vectors lengths differ");
+            }
+
+            List<double> data = new List<double>();
+            for (int i = 0; i < _data.Count(); i++)
+            {
+                data.Add(_data[i] * other[i]);
+            }
+
+            return new MathVector(data);
+        }
+
+        public static MathVector operator *(MathVector first, MathVector second)
+        {
+            return first.MultiplyByVector(second);
         }
     }
 }

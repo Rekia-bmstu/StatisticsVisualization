@@ -17,7 +17,7 @@ namespace VectorCollection
             get 
             {
                 if (_pos > _data.Count || _pos < 0)
-                    throw new Exception("?????????");
+                    throw new InvalidOperationException("Current position is out of range");
                 
                 return _current;
             }
