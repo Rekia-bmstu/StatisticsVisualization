@@ -199,5 +199,27 @@ namespace VectorCollection
         {
             return first.MultiplyByVector(second);
         }
+
+        public double ScalarProduct(MathVector other)
+        {
+            if (other == null)
+            {
+                throw new NullReferenceException("Invalid arguments");
+            }
+
+            if (_data.Count() != other.Count())
+            {
+                throw new InvalidOperationException("Vectors lengths differ");
+            }
+
+            double scalarProduct = 0;
+
+            for (int i = 0; i < other.Count(); i++)
+            {
+                scalarProduct += this[i] * other[i];
+            }
+
+            return scalarProduct;
+        }
     }
 }
