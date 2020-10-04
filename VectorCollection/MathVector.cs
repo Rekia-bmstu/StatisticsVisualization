@@ -28,6 +28,17 @@ namespace VectorCollection
             _data = new List<double>(size);
         }
 
+        public double Length()
+        {
+            double sum = 0;
+            foreach (var item in _data)
+            {
+                sum += Math.Pow(item, 2);
+            }
+
+            return Math.Sqrt(sum);
+        }
+
         public IEnumerator<double> GetEnumerator()
         {
             return new VectorEnumerator(_data);
