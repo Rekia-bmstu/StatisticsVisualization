@@ -8,10 +8,29 @@ namespace VectorCollection
     public class MathVector : IEnumerable<double>
     {
         private List<double> _data;
+        private int _dimensions;
+
+        public int Dimensions
+        {
+            get
+            {
+                return _dimensions;
+            }
+
+            set
+            {
+                if (_dimensions <= 0)
+                {
+                    throw new InvalidOperationException("Negative count for dimensions");
+                }
+                _dimensions = value;
+            }
+        }
 
         public MathVector(params double[] data)
         {
             _data = new List<double>();
+            Dimensions = _data.Count();
             foreach (var item in data)
             {
                 _data.Add(item);
@@ -25,7 +44,8 @@ namespace VectorCollection
 
         public MathVector(int size)
         {
-            _data = new List<double>(size);
+            Dimensions = size;
+            _data = new List<double>(Dimensions);
         }
 
         public double Length()
