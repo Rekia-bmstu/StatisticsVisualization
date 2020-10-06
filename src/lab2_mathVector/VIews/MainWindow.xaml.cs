@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace lab2_mathVector
+namespace lab2_mathVector.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
