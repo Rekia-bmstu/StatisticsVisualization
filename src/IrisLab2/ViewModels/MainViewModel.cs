@@ -61,7 +61,7 @@ namespace IrisLab2.ViewModels
             if (!File.Exists(FilePath))
                 return;
 
-            string[] data = File.ReadAllLines(FilePath);
+            List<string> data = File.ReadAllLines(FilePath).ToList();
         }
 
         private void ChooseFile()
