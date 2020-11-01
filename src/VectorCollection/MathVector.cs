@@ -255,5 +255,21 @@ namespace VectorCollection
 
             return scalarProduct;
         }
+
+        public double GetDistance(MathVector vector)
+        {
+            if (Dimensions != vector.Dimensions)
+                throw new ArgumentException("Vectors lengths differ");
+
+            double result = 0.0;
+
+            for (int i = 0; i < Dimensions; i++)
+                result += Math.Pow(this[i] - vector[i], 2);
+
+            return Math.Sqrt(result);
+        }
     }
+
+   
+
 }

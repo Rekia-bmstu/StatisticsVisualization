@@ -1,7 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using IrisLab2.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace lab2_mathVector
+namespace IrisLab2.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,14 +24,8 @@ namespace lab2_mathVector
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void LoadFileClick(object sender, EventArgs e)
-        {
-            var fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
-            string fileName = fileDialog.FileName;
-            btnFileDialog.Content = fileName;
+            DataContext = new MainViewModel();
         }
     }
 }

@@ -1,16 +1,18 @@
-﻿<Window x:Class="lab2_mathVector.MainWindow"
+﻿<Window x:Class="IrisLab2.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:lab2_mathVector"
+        xmlns:local="clr-namespace:IrisLab2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="Body">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnFileDialog" Grid.Row="0" Content="Load File" Click="LoadFileClick"/>
+
+        <Label Content="{Binding FileName}"/>
+        <Button Grid.Row="1" Content="Load file" Command="{Binding LoadFileCommand}"/>
     </Grid>
 </Window>
