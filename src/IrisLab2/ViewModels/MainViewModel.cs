@@ -16,8 +16,6 @@ namespace IrisLab2.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public string FilePath { get; set; } = "";
-
         private string _fileName = "Not choosen";
         public string FileName 
         { 
@@ -43,17 +41,6 @@ namespace IrisLab2.ViewModels
             } 
         }
 
-        private SeriesCollection[] _graphicsSeriesCollections;
-        public SeriesCollection[] GraphicsSeriesCollections
-        {
-            get => _graphicsSeriesCollections;
-            set
-            {
-                _graphicsSeriesCollections = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         private string[] _graphicsNames;
         public string[] GraphicsNames
         {
@@ -65,6 +52,17 @@ namespace IrisLab2.ViewModels
             }
         }
 
+        private SeriesCollection[] _graphicsSeriesCollections;
+        public SeriesCollection[] GraphicsSeriesCollections
+        {
+            get => _graphicsSeriesCollections;
+            set
+            {
+                _graphicsSeriesCollections = value;
+                NotifyPropertyChanged();
+            }
+        }
+       
         DelegateCommand _loadFileCommand;
         public ICommand LoadFileCommand
         {
@@ -79,6 +77,8 @@ namespace IrisLab2.ViewModels
             }
         }
 
+        public string FilePath { get; set; } = "";
+
         private void LoadFile()
         {
             ChooseFile();
@@ -89,14 +89,14 @@ namespace IrisLab2.ViewModels
 
             List<string> data = File.ReadAllLines(FilePath).ToList();
             GraphicsNames = DataManger.GetHeaders(data).ToArray();
-            GraphicsSeriesCollections = MainViewModel.ConvertToSeriesCollections(DataManger.GetIrisNames(data), DataManger.GetGraphicsValues(data));
+            GraphicsSeriesCollections = ConvertToSeriesCollections(DataManger.GetIrisNames(data), DataManger.GetGraphicsValues(data));
             FileLoaded = true;
         }
 
         private void ChooseFile()
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "CSV Files (*.csv)|*.csv";
+            dialog.Filter = "CSV Files|*.csv";
             if (dialog.ShowDialog() == true)
             {
                 FilePath = dialog.FileName;
@@ -107,13 +107,13 @@ namespace IrisLab2.ViewModels
         private static SeriesCollection ConvertToChartSeriesCollection(List<string> names, MathVector values)
         {
             var result = new SeriesCollection();
-            for (int j = 0; j < values.Dimensions; j++)
+            for (int i = 0; i < values.Dimensions; i++)
             {
                 result.Add(
                     new ColumnSeries
                     {
-                        Title = names[j],
-                        Values = new ChartValues<double>() { values[j] }
+                        Title = names[i],
+                        Values = new ChartValues<double>() { values[i] }
                     });
             }
             return result;

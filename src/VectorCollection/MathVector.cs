@@ -297,7 +297,4 @@ namespace VectorCollection
             return Math.Sqrt(result);
         }
     }
-
-   
-
 }
