@@ -16,10 +16,10 @@ namespace IrisLab2.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _fileName = "Not choosen";
+        private string _fileName = "Not chosen";
 
         /// <summary>
-        /// Name of file
+        /// Name of chosen file
         /// </summary>
         public string FileName 
         { 
