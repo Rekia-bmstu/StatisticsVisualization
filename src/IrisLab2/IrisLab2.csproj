@@ -62,7 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ToIrisTypeConverter.cs" />
-    <Compile Include="Models\DataManger.cs" />
+    <Compile Include="Models\DataManager.cs" />
     <Compile Include="Models\IrisType.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

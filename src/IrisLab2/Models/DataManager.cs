@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace IrisLab2.Models
 {
-    public static class DataManger
+    public static class DataManager
     {
         /// <summary>
         /// Returns headers from raw data

@@ -111,8 +111,8 @@ namespace IrisLab2.ViewModels
                 return;
 
             List<string> data = File.ReadAllLines(FilePath).ToList();
-            GraphicsNames = DataManger.GetHeaders(data).ToArray();
-            GraphicsSeriesCollections = ConvertToSeriesCollections(DataManger.GetIrisNames(data), DataManger.GetGraphicsValues(data));
+            GraphicsNames = DataManager.GetHeaders(data).ToArray();
+            GraphicsSeriesCollections = ConvertToSeriesCollections(DataManager.GetIrisNames(data), DataManager.GetGraphicsValues(data));
             FileLoaded = true;
         }
 
