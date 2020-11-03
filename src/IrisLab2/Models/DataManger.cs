@@ -11,11 +11,17 @@ namespace IrisLab2.Models
 {
     public static class DataManger
     {
+        /// <summary>
+        /// Returns headers from raw data
+        /// </summary>
         public static List<string> GetHeaders(List<string> data)
         {
             return data[0].Split(',').ToList();
         }
 
+        /// <summary>
+        /// Returns graphics values from raw data
+        /// </summary>
         public static List<MathVector> GetGraphicsValues(List<string> data)
         {
             var dataArray = GetAverageData(GetData(data, has_headers: true));
@@ -25,6 +31,11 @@ namespace IrisLab2.Models
             return result;
         }
 
+        /// <summary>
+        /// Return iris name from raw data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static List<string> GetIrisNames(List<string> data)
         {
             HashSet<string> irisNames = new HashSet<string>();
@@ -47,8 +58,6 @@ namespace IrisLab2.Models
         {
             var result = new Dictionary<IrisType, List<MathVector>>(3);
 
-            string currentName = data[has_headers ? 1 : 0].Split(',').Last().ToString();
-
             for (int i = has_headers ? 1 : 0; i < data.Count; i++)
             {
                 var temp = data[i].Split(',').ToList();
@@ -57,7 +66,6 @@ namespace IrisLab2.Models
 
                 if (!result.ContainsKey(currentIrisType))
                 {
-                    currentName = temp[last];
                     result.Add(currentIrisType, new List<MathVector>()); //Adding new iris type to collection
                 }
 
