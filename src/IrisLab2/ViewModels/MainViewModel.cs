@@ -18,7 +18,7 @@ namespace IrisLab2.ViewModels
     {
         public string FilePath { get; set; } = "";
 
-        private string _fileName = "Not chosed";
+        private string _fileName = "Not choosen";
         public string FileName 
         { 
             get
@@ -119,12 +119,29 @@ namespace IrisLab2.ViewModels
             return result;
         }
 
+        private static SeriesCollection ConvertToPieSeriesCollection(List<string> names, MathVector values)
+        {
+            var result = new SeriesCollection();
+            for (int i = 0; i < values.Dimensions; i++)
+            {
+                result.Add(
+                    new PieSeries
+                    {
+                        Title = names[i],
+                        Values = new ChartValues<double>() { values[i] }
+                    });
+            }
+
+            return result;
+        }
+
         private static SeriesCollection[] ConvertToSeriesCollections(List<string> names, List<MathVector> values)
         {
             SeriesCollection[] result = new SeriesCollection[5];
             for (int i = 0; i < values.Count - 1; i++)
                 result[i] = ConvertToChartSeriesCollection(names, values[i]);
 
+            result[values.Count - 1] = ConvertToPieSeriesCollection(names, values[values.Count - 1]);
 
             return result;
         }

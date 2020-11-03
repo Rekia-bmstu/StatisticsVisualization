@@ -18,10 +18,10 @@ namespace IrisLab2.Models
 
         public static List<MathVector> GetGraphicsValues(List<string> data)
         {
-            var composedData = GetData(data, has_headers: true);
-            var dataArray = GetAverageData(composedData);
-            var result = GetCartesianGraphicsValues(dataArray);
-            
+            var dataArray = GetAverageData(GetData(data, has_headers: true));
+            var result = GetListOfBarsValues(dataArray);
+            result.Add(GetPieValues(dataArray));
+
             return result;
         }
 
@@ -29,9 +29,9 @@ namespace IrisLab2.Models
         {
             HashSet<string> irisNames = new HashSet<string>();
             int last = -1;
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 1; i < data.Count; i++)
             {
-                List<string> temp = data[i].Split(',').ToList();
+                var temp = data[i].Split(',').ToList();
                 if (last == -1)
                 {
                     last = temp.Count - 1;
@@ -107,17 +107,27 @@ namespace IrisLab2.Models
             return result;
         }
 
-        private static List<MathVector> GetCartesianGraphicsValues(List<MathVector> dataArray)
+        private static List<MathVector> GetListOfBarsValues(List<MathVector> dataArray)
         {
             var result = new List<MathVector>();
+
             for (int i = 0; i < dataArray[0].Dimensions; i++)
             {
                 result.Add(new MathVector());
                 for (int j = 0; j < dataArray.Count; j++)
+                {
                     result[i].Add(dataArray[j][i]);
+                }
             }
 
             return result;
+        }
+
+        private static MathVector GetPieValues(List<MathVector> data)
+        {
+            return new MathVector(data[0].GetDistance(data[1]),
+                                  data[0].GetDistance(data[2]),
+                                  data[1].GetDistance(data[2]));
         }
     }
 }
