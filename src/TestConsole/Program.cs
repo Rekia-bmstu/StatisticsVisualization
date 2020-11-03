@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using VectorCollection;
 
 namespace TestConsole
@@ -7,6 +8,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }

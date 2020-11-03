@@ -19,7 +19,7 @@ namespace VectorCollection
 
             set
             {
-                if (_dimensions <= 0)
+                if (_dimensions < 0)
                 {
                     throw new InvalidOperationException("Negative count for dimensions");
                 }
@@ -27,25 +27,39 @@ namespace VectorCollection
             }
         }
 
-        public MathVector(params double[] data)
+        public MathVector()
         {
             _data = new List<double>();
-            Dimensions = _data.Count();
+            Dimensions = 0;
+        }
+
+        public MathVector(params double[] data)
+        {
+            _data = new List<double>(0);
             foreach (var item in data)
             {
                 _data.Add(item);
             }
+
+            Dimensions = _data.Count();
         }
 
         public MathVector(List<double> data)
         {
             _data = data;
+            Dimensions = data.Count;
         }
 
         public MathVector(int size)
         {
             Dimensions = size;
             _data = new List<double>(Dimensions);
+        }
+
+        public void Add(double value)
+        {
+            _data.Add(value);
+            Dimensions = _data.Count;
         }
 
         public double Length
@@ -60,6 +74,20 @@ namespace VectorCollection
 
                 return Math.Sqrt(sum);
             }
+        }
+
+        public double GetAverage()
+        {
+            if (Dimensions == 0)
+                return 0;
+
+            double sum = 0;
+            foreach (var elem in this)
+            {
+                sum += elem;
+            }
+
+            return sum / Dimensions;
         }
 
         public IEnumerator<double> GetEnumerator()
