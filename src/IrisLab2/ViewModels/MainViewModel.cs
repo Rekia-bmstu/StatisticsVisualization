@@ -17,6 +17,10 @@ namespace IrisLab2.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private string _fileName = "Not choosen";
+
+        /// <summary>
+        /// Name of file
+        /// </summary>
         public string FileName 
         { 
             get
@@ -31,6 +35,10 @@ namespace IrisLab2.ViewModels
         }
 
         private bool _fileLoaded = false;
+
+        /// <summary>
+        /// Loading file flag
+        /// </summary>
         public bool FileLoaded 
         {
             get => _fileLoaded;
@@ -42,6 +50,10 @@ namespace IrisLab2.ViewModels
         }
 
         private string[] _graphicsNames;
+
+        /// <summary>
+        /// Titles of graphics 
+        /// </summary>
         public string[] GraphicsNames
         {
             get => _graphicsNames;
@@ -53,6 +65,10 @@ namespace IrisLab2.ViewModels
         }
 
         private SeriesCollection[] _graphicsSeriesCollections;
+
+        /// <summary>
+        /// Values for graphics
+        /// </summary>
         public SeriesCollection[] GraphicsSeriesCollections
         {
             get => _graphicsSeriesCollections;
@@ -64,6 +80,10 @@ namespace IrisLab2.ViewModels
         }
        
         DelegateCommand _loadFileCommand;
+
+        /// <summary>
+        /// Command to load file
+        /// </summary>
         public ICommand LoadFileCommand
         {
             get
@@ -77,6 +97,9 @@ namespace IrisLab2.ViewModels
             }
         }
 
+        /// <summary>
+        /// Path to the selected file
+        /// </summary>
         public string FilePath { get; set; } = "";
 
         private void LoadFile()
