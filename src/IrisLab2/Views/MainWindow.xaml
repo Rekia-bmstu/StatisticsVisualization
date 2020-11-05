@@ -56,28 +56,28 @@
         </Border>
 
         <Border Grid.Row="2" CornerRadius="10">
-            <lvc:CartesianChart Series="{Binding GraphicsSeriesCollections[0]}">
+            <lvc:CartesianChart Series="{Binding GraphicsSeriesArray[0]}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding GraphicsNames[0]}" Labels=""></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Border>
         <Border Grid.Row="2" Grid.Column="1" CornerRadius="10">
-            <lvc:CartesianChart Series="{Binding GraphicsSeriesCollections[1]}">
+            <lvc:CartesianChart Series="{Binding GraphicsSeriesArray[1]}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding GraphicsNames[1]}" Labels=""></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Border>
         <Border Grid.Row="3" Grid.Column="0" CornerRadius="10">
-            <lvc:CartesianChart Series="{Binding GraphicsSeriesCollections[2]}">
+            <lvc:CartesianChart Series="{Binding GraphicsSeriesArray[2]}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding GraphicsNames[2]}" Labels=""></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Border>
         <Border Grid.Row="3" Grid.Column="1" CornerRadius="10">
-            <lvc:CartesianChart Series="{Binding GraphicsSeriesCollections[3]}">
+            <lvc:CartesianChart Series="{Binding GraphicsSeriesArray[3]}">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{Binding GraphicsNames[3]}" Labels=""></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
@@ -85,7 +85,7 @@
         </Border>
 
         <Border  Grid.Column="2" Grid.RowSpan="3" CornerRadius="10">
-            <lvc:PieChart LegendLocation="Bottom" Hoverable="False" DataTooltip="{x:Null}" Series="{Binding GraphicsSeriesCollections[4]}">
+            <lvc:PieChart LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}" Series="{Binding GraphicsSeriesArray[4]}">
             </lvc:PieChart>
         </Border>
     </Grid>
