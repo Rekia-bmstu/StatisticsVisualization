@@ -64,17 +64,17 @@ namespace IrisLab2.ViewModels
             }
         }
 
-        private SeriesCollection[] _graphicsSeriesCollections;
+        private SeriesCollection[] _graphicsSeriesArray;
 
         /// <summary>
         /// Values for graphics
         /// </summary>
-        public SeriesCollection[] GraphicsSeriesCollections
+        public SeriesCollection[] GraphicsSeriesArray
         {
-            get => _graphicsSeriesCollections;
+            get => _graphicsSeriesArray;
             set
             {
-                _graphicsSeriesCollections = value;
+                _graphicsSeriesArray = value;
                 NotifyPropertyChanged();
             }
         }
@@ -112,7 +112,7 @@ namespace IrisLab2.ViewModels
 
             List<string> data = File.ReadAllLines(FilePath).ToList();
             GraphicsNames = DataManager.GetHeaders(data).ToArray();
-            GraphicsSeriesCollections = ConvertToSeriesCollections(DataManager.GetIrisNames(data), DataManager.GetGraphicsValues(data));
+            GraphicsSeriesArray = ConvertToSeriesCollections(DataManager.GetIrisNames(data), DataManager.GetGraphicsValues(data));
             FileLoaded = true;
         }
 

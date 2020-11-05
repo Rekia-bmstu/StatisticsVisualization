@@ -32,10 +32,8 @@ namespace IrisLab2.Models
         }
 
         /// <summary>
-        /// Return iris name from raw data
+        /// Return iris names from raw data
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
         public static List<string> GetIrisNames(List<string> data)
         {
             HashSet<string> irisNames = new HashSet<string>();

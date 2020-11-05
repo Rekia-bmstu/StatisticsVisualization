@@ -296,5 +296,28 @@ namespace VectorCollection
 
             return Math.Sqrt(result);
         }
+
+        public override string ToString()
+        {
+            string result = "";
+            foreach (var item in _data)
+            {
+                result += item.ToString() + " ";
+            }
+
+            return result;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var vector = obj as MathVector;
+            bool result = Dimensions == vector.Dimensions;
+            for (int i = 0; i < Dimensions && result; i++)
+            {
+                result = this[i] == vector[i];
+            }
+
+            return result;
+        }
     }
 }
