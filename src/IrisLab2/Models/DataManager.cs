@@ -9,12 +9,12 @@ using System.Globalization;
 
 namespace IrisLab2.Models
 {
-    public static class DataManager
+    public class DataManager : IDataManager
     {
         /// <summary>
         /// Returns headers from raw data
         /// </summary>
-        public static List<string> GetHeaders(List<string> data)
+        public List<string> GetHeaders(List<string> data)
         {
             return data[0].Split(',').ToList();
         }
@@ -22,7 +22,7 @@ namespace IrisLab2.Models
         /// <summary>
         /// Returns graphics values from raw data
         /// </summary>
-        public static List<MathVector> GetGraphicsValues(List<string> data)
+        public List<MathVector> GetGraphicsValues(List<string> data)
         {
             var dataArray = GetAverageData(GetData(data, has_headers: true));
             var result = GetListOfBarsValues(dataArray);
@@ -34,7 +34,7 @@ namespace IrisLab2.Models
         /// <summary>
         /// Return iris names from raw data
         /// </summary>
-        public static List<string> GetIrisNames(List<string> data)
+        public List<string> GetIrisNames(List<string> data)
         {
             HashSet<string> irisNames = new HashSet<string>();
             int last = -1;

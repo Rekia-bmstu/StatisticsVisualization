@@ -17,6 +17,7 @@ namespace IrisLab2.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private string _fileName = "Not chosen";
+       
 
         /// <summary>
         /// Name of chosen file
@@ -32,6 +33,18 @@ namespace IrisLab2.ViewModels
                 _fileName = value;
                 NotifyPropertyChanged();
             } 
+        }
+
+        private IDataManager _dataManager;
+
+        public MainViewModel()
+        {
+
+        }
+
+        public MainViewModel(IDataManager dataManager)
+        {
+            _dataManager = dataManager;
         }
 
         private bool _fileLoaded = false;
@@ -111,8 +124,8 @@ namespace IrisLab2.ViewModels
                 return;
 
             List<string> data = File.ReadAllLines(FilePath).ToList();
-            GraphicsNames = DataManager.GetHeaders(data).ToArray();
-            GraphicsSeriesArray = ConvertToSeriesCollections(DataManager.GetIrisNames(data), DataManager.GetGraphicsValues(data));
+            GraphicsNames = _dataManager.GetHeaders(data).ToArray();
+            GraphicsSeriesArray = ConvertToSeriesCollections(_dataManager.GetIrisNames(data), _dataManager.GetGraphicsValues(data));
             FileLoaded = true;
         }
 

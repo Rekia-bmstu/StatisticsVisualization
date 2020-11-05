@@ -1,4 +1,7 @@
-﻿using IrisLab2.ViewModels;
+﻿using IrisLab2.IoC;
+using IrisLab2.Models;
+using IrisLab2.ViewModels;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +28,8 @@ namespace IrisLab2.Views
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel();
+            IKernel ninjectKernel = new StandardKernel(new ConfigModule());
+            DataContext = new MainViewModel(ninjectKernel.Get<IDataManager>());
         }
     }
 }
