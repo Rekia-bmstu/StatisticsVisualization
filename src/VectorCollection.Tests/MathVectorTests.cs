@@ -13,8 +13,21 @@ namespace VectorCollection.Tests
         public void SumPositiveNumberTest()
         {
             var vector = new MathVector(-1, 0, 1);
-            var sum_vector = vector + 1;
-            Assert.Equal(new MathVector(0, 1, 2), sum_vector);
+            Assert.Equal<MathVector>(new MathVector(0, 1, 2), vector + 1);
+        }
+
+        [Fact]
+        public void SumNegativeNumber()
+        {
+            var vector = new MathVector(-1, 0, 1);
+            Assert.Equal<MathVector>(new MathVector(-2, -1, 0), vector + (-1));
+        }
+
+        [Fact]
+        public void SumZeroNumber()
+        {
+            var vector = new MathVector(-1, 0, 1);
+            Assert.Equal<MathVector>(new MathVector(-1, 0, 1), vector + 0);
         }
     }
 }
