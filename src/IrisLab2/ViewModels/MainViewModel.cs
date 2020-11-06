@@ -16,9 +16,6 @@ namespace IrisLab2.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _fileName = "Not chosen";
-       
-
         /// <summary>
         /// Name of chosen file
         /// </summary>
@@ -34,6 +31,7 @@ namespace IrisLab2.ViewModels
                 NotifyPropertyChanged();
             } 
         }
+        private string _fileName = "Not chosen";
 
         private IDataManager _dataManager;
 
@@ -47,7 +45,7 @@ namespace IrisLab2.ViewModels
             _dataManager = dataManager;
         }
 
-        private bool _fileLoaded = false;
+        
 
         /// <summary>
         /// Loading file flag
@@ -61,8 +59,9 @@ namespace IrisLab2.ViewModels
                 NotifyPropertyChanged();
             } 
         }
+        private bool _fileLoaded = false;
 
-        private string[] _graphicsNames;
+       
 
         /// <summary>
         /// Titles of graphics 
@@ -76,8 +75,7 @@ namespace IrisLab2.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
-        private SeriesCollection[] _graphicsSeriesArray;
+        private string[] _graphicsNames;
 
         /// <summary>
         /// Values for graphics
@@ -91,8 +89,7 @@ namespace IrisLab2.ViewModels
                 NotifyPropertyChanged();
             }
         }
-       
-        DelegateCommand _loadFileCommand;
+        private SeriesCollection[] _graphicsSeriesArray;
 
         /// <summary>
         /// Command to load file
@@ -109,6 +106,7 @@ namespace IrisLab2.ViewModels
                 return _loadFileCommand;
             }
         }
+        DelegateCommand _loadFileCommand;
 
         /// <summary>
         /// Path to the selected file
