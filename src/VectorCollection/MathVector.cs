@@ -135,7 +135,7 @@ namespace VectorCollection
 
         public MathVector DivideByNumber(double n)
         {
-            if (n != 0)
+            if (n == 0)
             {
                 throw new ArgumentException("Division by zero");
             }
