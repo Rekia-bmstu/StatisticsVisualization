@@ -9,11 +9,17 @@ namespace VectorCollection.Tests
 {
     public class MathVectorTests
     {
+        #region SumNumberTests
         [Fact]
         public void SumPositiveNumber()
         {
+            //arrange
             var vector = new MathVector(-1, 0, 1);
-            Assert.Equal<MathVector>(new MathVector(0, 1, 2), vector.AddNumber(1));
+
+            //act
+
+            //assert
+            Assert.Equal<MathVector>(new MathVector(0, 1, 2), vector + 1);
         }
 
         [Fact]
@@ -30,6 +36,9 @@ namespace VectorCollection.Tests
             Assert.Equal<MathVector>(new MathVector(-1, 0, 1), vector + 0);
         }
 
+        #endregion
+
+        #region SumVectorTests
         [Fact]
         public void SumPositiveVectors()
         {
@@ -56,7 +65,9 @@ namespace VectorCollection.Tests
 
             Assert.Equal(expected: new MathVector(1, 2, 3), actual: vector1 + vector2);
         }
+        #endregion
 
+        #region MultiplyByNumber
         [Fact]
         public void MultiplyByPositiveNumber()
         {
@@ -80,7 +91,9 @@ namespace VectorCollection.Tests
 
             Assert.Equal(expected: new MathVector(0, 0, 0), actual: vector * 0);
         }
+        #endregion
 
+        #region MultiplyVectors
         [Fact]
         public void MultiplyPositiveVectors()
         {
@@ -107,7 +120,9 @@ namespace VectorCollection.Tests
 
             Assert.Equal(expected: new MathVector(0, 0, 0), actual: vector1 * vector2);
         }
+        #endregion
 
+        #region DivisionByZero
         [Fact]
         public void DivideByPositiveNumber()
         {
@@ -131,5 +146,6 @@ namespace VectorCollection.Tests
 
             Assert.ThrowsAny<ArgumentException>(() => vector / 0);
         }
+        #endregion
     }
 }
