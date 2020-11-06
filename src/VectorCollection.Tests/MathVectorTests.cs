@@ -80,5 +80,56 @@ namespace VectorCollection.Tests
 
             Assert.Equal(expected: new MathVector(0, 0, 0), actual: vector * 0);
         }
+
+        [Fact]
+        public void MultiplyPositiveVectors()
+        {
+            var vector1 = new MathVector(1, 2, 3);
+            var vector2 = new MathVector(1, 2, 2);
+
+            Assert.Equal(expected: new MathVector(1, 4, 6), actual: vector1 * vector2);
+        }
+
+        [Fact]
+        public void MultiplyNegativeVectors()
+        {
+            var vector1 = new MathVector(1, 2, 3);
+            var vector2 = new MathVector(-1, -2, -2);
+
+            Assert.Equal(expected: new MathVector(-1, -4, -6), actual: vector1 * vector2);
+        }
+
+        [Fact]
+        public void MultiplyZeroVectors()
+        {
+            var vector1 = new MathVector(1, 2, 3);
+            var vector2 = new MathVector(0, 0, 0);
+
+            Assert.Equal(expected: new MathVector(0, 0, 0), actual: vector1 * vector2);
+        }
+
+        [Fact]
+        public void DivideByPositiveNumber()
+        {
+            var vector = new MathVector(2, 3, 4);
+
+            Assert.Equal(expected: new MathVector(1, 1.5, 2), actual: vector / 2);
+        }
+
+        [Fact]
+        public void DivideByNegativeNumber()
+        {
+            var vector = new MathVector(2, 3, 4);
+
+            Assert.Equal(expected: new MathVector(-1, -1.5, -2), actual: vector / -2);
+        }
+
+        [Fact]
+        public void DivideByZeroNumber()
+        {
+            var vector = new MathVector(2, 3, 4);
+
+            Assert.ThrowsAny<ArgumentException>(() => vector / 0);
+        }
     }
 }
