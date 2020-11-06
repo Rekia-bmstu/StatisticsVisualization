@@ -33,7 +33,7 @@ namespace VectorCollection
             _data = data;
         }
 
-        object IEnumerator.Current => throw new NotImplementedException();
+        object IEnumerator.Current => _current;
 
         public void Dispose()
         {
