@@ -14,7 +14,7 @@ namespace IrisLab2.Models
         /// <summary>
         /// Returns headers from raw data
         /// </summary>
-        public List<string> GetHeaders(List<string> data)
+        public IEnumerable<string> GetHeaders(List<string> data)
         {
             return data[0].Split(',').ToList();
         }
@@ -22,7 +22,7 @@ namespace IrisLab2.Models
         /// <summary>
         /// Returns graphics values from raw data
         /// </summary>
-        public List<MathVector> GetGraphicsValues(List<string> data)
+        public IEnumerable<MathVector> GetGraphicsValues(List<string> data)
         {
             var dataArray = GetAverageData(GetData(data, has_headers: true));
             var result = GetListOfBarsValues(dataArray);
@@ -34,7 +34,7 @@ namespace IrisLab2.Models
         /// <summary>
         /// Return iris names from raw data
         /// </summary>
-        public List<string> GetIrisNames(List<string> data)
+        public IEnumerable<string> GetIrisNames(List<string> data)
         {
             HashSet<string> irisNames = new HashSet<string>();
             int last = -1;
@@ -52,7 +52,7 @@ namespace IrisLab2.Models
             return irisNames.ToList();
         }
 
-        private static Dictionary<IrisType, List<MathVector>> GetData(List<string> data, bool has_headers = false)
+        private Dictionary<IrisType, List<MathVector>> GetData(List<string> data, bool has_headers = false)
         {
             var result = new Dictionary<IrisType, List<MathVector>>(3);
 
@@ -73,14 +73,14 @@ namespace IrisLab2.Models
             return result;
         }
 
-        private static void AddListOfValues(List<MathVector> list, List<string> values)
+        private void AddListOfValues(List<MathVector> list, List<string> values)
         {
             NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
             values.Remove(values.Last());
             list.Add(new MathVector(values.Select(o => Convert.ToDouble(o, numberFormatInfo)).ToList()));
         }
 
-        private static List<MathVector> GetAverageData(Dictionary<IrisType, List<MathVector>> data)
+        private List<MathVector> GetAverageData(Dictionary<IrisType, List<MathVector>> data)
         {
             var result = new List<MathVector>();
 
@@ -92,7 +92,7 @@ namespace IrisLab2.Models
             return result;
         }
 
-        private static MathVector GetAverageVector(List<MathVector> list)
+        private MathVector GetAverageVector(List<MathVector> list)
         {
             var result = new MathVector();
 
@@ -113,7 +113,7 @@ namespace IrisLab2.Models
             return result;
         }
 
-        private static List<MathVector> GetListOfBarsValues(List<MathVector> dataArray)
+        private List<MathVector> GetListOfBarsValues(List<MathVector> dataArray)
         {
             var result = new List<MathVector>();
 
@@ -129,7 +129,7 @@ namespace IrisLab2.Models
             return result;
         }
 
-        private static MathVector GetPieValues(List<MathVector> data)
+        private MathVector GetPieValues(List<MathVector> data)
         {
             return new MathVector(data[0].GetDistance(data[1]),
                                   data[0].GetDistance(data[2]),

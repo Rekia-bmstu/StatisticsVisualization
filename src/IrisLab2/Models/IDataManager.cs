@@ -9,8 +9,8 @@ namespace IrisLab2.Models
 {
     public interface IDataManager
     {
-        List<string> GetHeaders(List<string> data);
-        List<MathVector> GetGraphicsValues(List<string> data);
-        List<string> GetIrisNames(List<string> data);
+        IEnumerable<string> GetHeaders(List<string> data);
+        IEnumerable<MathVector> GetGraphicsValues(List<string> data);
+        IEnumerable<string> GetIrisNames(List<string> data);
     }
 }
